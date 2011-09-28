@@ -1,8 +1,8 @@
 require 'rubygems'
 require 'mongo'
-loop do
 db = Mongo::Connection.new("localhost",5151).db("local")
 coll = db.collection('oplog.$main')
+loop do
 cursor = Mongo::Cursor.new(coll, :timeout => false, :tailable => true)
 	while not cursor.closed?
 	begin
